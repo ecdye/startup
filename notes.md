@@ -1,5 +1,7 @@
 # CS 260 Notes
 
+Notes on the Wheel Spinner website.
+
 [My startup](https://example.com)
 
 ## Helpful links
