@@ -9,6 +9,7 @@ Notes on the Wheel Spinner website.
 - [Course instruction](https://github.com/webprogramming260)
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
+- [Mermaid Chart Editor](https://mermaidchart.com)
 
 ## AWS Notes
 
