@@ -48,7 +48,7 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Organize main content on page, two primary pages: wheels and login.
 - **CSS** - Style and keep text elements clear and visually separated. Also adjust for screen size.
 - **React** - Control spinning animation, random result picking, login and authentication.
-- **Service** - Endpoints for login, saving, and retrieving old wheels.
+- **Service** - Endpoints for login, saving, and retrieving old wheels, change the fonts using the [Google Fonts API](https://developers.google.com/fonts/docs/developer_api) for fun.
 - **DB/Login** - Store users and wheels. Securely store users information. Cannot save wheels if not logged in.
 - **WebSocket** - Serve results from other wheel spins to add a fun twist.
 
