@@ -14,6 +14,9 @@ Notes on the Wheel Spinner website.
 ## AWS Notes
 
 mrtops-byu
+My domain is [ecdye.click](https://ecdye.click) which renews at $3 a year with ~$.50 a month for hosting.
+Caddy is using Lets Encrypt to generate a free certificate and make it so we don't have to worry about manually configuring it.
+
 
 ## HTML Notes
 
