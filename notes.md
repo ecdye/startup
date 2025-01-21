@@ -2,7 +2,7 @@
 
 Notes on the Wheel Spinner website.
 
-[My startup](https://example.com)
+[My startup](https://ecdye.click)
 
 ## Helpful links
 
@@ -20,4 +20,4 @@ Caddy is using Lets Encrypt to generate a free certificate and make it so we don
 
 ## HTML Notes
 
-TBD
+Good reference for input types in HTML is [here](https://github.com/webprogramming260/.github/blob/main/profile/html/input/input.md#html-input-elements)
