@@ -1,4 +1,4 @@
-# Wheel Spinner (choose a random item)
+# Wheel Spinner - Random Choice Maker
 
 [My Notes](notes.md)
 
