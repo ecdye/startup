@@ -20,7 +20,7 @@ You know that moment when you need to decide between a list of options and they 
 
 ### Design
 
-![Design image](docs/img/DesignDrawing.jpg)
+![Design image](src/img/DesignDrawing.jpg)
 
 Just a simple page where the central element is the spinning wheel, and you can put in all of the options.
 
@@ -67,7 +67,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Links** - There are links across all parts of the page
 - [x] **Text** - Text elements are used throughout the pages
 - [x] **3rd party API placeholder** - Placeholder in pages
-- [ ] **Images** - I did not use any images, so didn't do this part
+- [x] **Images** - An image is included to show off the very simple origins of the page
 - [x] **Login placeholder** - There is a placeholder login page
 - [x] **DB data placeholder** - There is a placeholder history page that will use a database
 - [x] **WebSocket placeholder** - There is a websocket placeholder that has results of other users spins
