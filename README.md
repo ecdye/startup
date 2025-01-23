@@ -48,7 +48,7 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Organize main content on page, two primary pages: wheels and login.
 - **CSS** - Style and keep text elements clear and visually separated. Also adjust for screen size.
 - **React** - Control spinning animation, random result picking, login and authentication.
-- **Service** - Endpoints for login, saving, and retrieving old wheels, change the fonts using the [Google Fonts API](https://developers.google.com/fonts/docs/developer_api) for fun.
+- **Service** - Endpoints for login, saving, and retrieving old wheels, change the colors of wheel using the [ColourLovers](https://www.colourlovers.com/api#palettes) for fun.
 - **DB/Login** - Store users and wheels. Securely store users information. Cannot save wheels if not logged in.
 - **WebSocket** - Serve results from other wheel spins to add a fun twist.
 
@@ -62,15 +62,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - 3 basic pages representing the webpage have been implemented
+- [x] **Proper HTML element usage** - All the different elements are used in appropriate places
+- [x] **Links** - There are links across all parts of the page
+- [x] **Text** - Text elements are used throughout the pages
+- [x] **3rd party API placeholder** - Placeholder in pages
+- [ ] **Images** - I did not use any images, so didn't do this part
+- [x] **Login placeholder** - There is a placeholder login page
+- [x] **DB data placeholder** - There is a placeholder history page that will use a database
+- [x] **WebSocket placeholder** - There is a websocket placeholder that has results of other users spins
 
 ## 🚀 CSS deliverable
 
