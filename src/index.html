@@ -4,25 +4,41 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <link rel="stylesheet" href="/js/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/js/node_modules/bootstrap-icons/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
 
     <title>Wheel Spinner - Random Choice Maker</title>
 </head>
 <body>
-    <header>
-        <h1>Wheel Spinner - Random Choice Maker</h1>
-        <nav>
-            <menu>
-                <!-- Maybe remove history unless logged in with JS in future -->
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/login.html">Login</a></li>
-                <li><a href="/history.html">My Wheels</a></li>
-                <li><a href="/about.html">About</a></li>
-            </menu>
-        </nav>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg spinner-dark navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Wheel Spinner - Random Choice Maker</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <menu class="collapse navbar-collapse">
+                <ul class="navbar-nav  justify-content-end">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/history.html">My Wheels</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/history.html">My Wheels</a>
+                  </li>
+                </ul>
+              </menu>
+            </div>
+          </nav>
     </header>
 
-    <main>
+    <main class="spinner-light container-fluid py-5 text">
         <p>Wheel Placeholder (styling is kinda important to make a wheel lol)</p>
         <p>3rd party api call will be used to get color pallette for wheel</p>
         <div id="wheel">
@@ -31,7 +47,7 @@
             <span>Option3</span>
             <span>Option4</span>
         </div>
-        <button id="spin">Spin</button>
+        <button id="spin" class="btn btn-primary">Spin</button>
 
         <div id="other-spins">
             <h4>Other Spins</h4>
@@ -39,9 +55,12 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Ethan Dye - Wheel Spinner</p>
-        <p>The source for this webpage is available at <a href="https://github.com/ecdye/startup">GitHub</a>.</p>
+    <footer class="spinner-dark text-light fixed-bottom p-2">
+        <div class="d-flex fw-bold align-items-center justify-content-between">
+            <p class="mb-0">&copy; 2025 Ethan Dye - Wheel Spinner</p>
+            <a class="btn btn-outline-primary spinner-accent bg-none" href="https://github.com/ecdye/startup"><i class="bi bi-github"></i> Source</a>
+        </div>
     </footer>
+    <script src="/js/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

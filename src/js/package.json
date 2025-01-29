@@ -1,0 +1,16 @@
+{
+  "name": "spinner",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ethan Dye",
+  "license": "MIT",
+  "description": "Wheel Spinner - Random Choice Maker",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3"
+  }
+}

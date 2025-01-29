@@ -1,0 +1,23 @@
+.spinner-dark {
+  background: #385170;
+}
+
+.spinner-light {
+  background: #ececec;
+}
+
+.spinner-accent {
+  background: none;
+  border-color: #9fd3c7;
+  color: #9fd3c7;
+}
+
+.spinner-accent:hover {
+  background: #9fd3c7;
+  border-color: #9fd3c7;
+  color: none;
+}
+
+.spinner-primary {
+  background: #142d4c;
+}
