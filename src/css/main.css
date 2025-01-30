@@ -49,6 +49,7 @@
   height: var(--spot-size);
   color: white;
   font-size: calc(var(--spot-size) / 3.5);
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
