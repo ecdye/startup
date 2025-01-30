@@ -21,3 +21,40 @@
 .spinner-primary {
   background: #142d4c;
 }
+
+
+/* Wheel CSS */
+:root {
+  --num-spots: 4;
+  --wheel-size: min(80vmin, 300px);
+  --spot-size: calc(var(--wheel-size) / var(--num-spots));
+}
+
+.wheel-container {
+  position: relative;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+  border-radius: 50%;
+  border: 4px solid #9fd3c7;
+  background-color: #142d4c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option {
+  --angle: calc(360deg / var(--num-spots) * var(--i));
+  position: absolute;
+  width: var(--spot-size);
+  height: var(--spot-size);
+  color: white;
+  font-size: calc(var(--spot-size) / 3.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Positioning */
+  transform-origin: center;
+  transform: rotate(var(--angle)) translate(calc(var(--wheel-size) / 3.5));
+}
