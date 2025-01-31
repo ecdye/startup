@@ -21,3 +21,7 @@ Caddy is using Lets Encrypt to generate a free certificate and make it so we don
 ## HTML Notes
 
 Good reference for input types in HTML is [here](https://github.com/webprogramming260/.github/blob/main/profile/html/input/input.md#html-input-elements)
+
+## CSS Notes
+
+I thought about using Tailwind as I have a little bit of experience with it but ended up choosing to use bootstrap with a small amount of additional styling for things like the wheel. I made this choice primarily to stretch myself and learn something new.
