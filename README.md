@@ -81,7 +81,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Responsive to window resizing** - The website appears normal in normal configurations.
 - [x] **Application elements** - All of the different elements of the application are styled as much as possible without use of JS.
 - [x] **Application text content** - Text is styled as appropriate to draw focus and encourage clarity
-- [x] **Application images** - The images are styled to appear nicely
+- [x] **Application images** - The image on the about page is styled to appear nicely
 
 ## 🚀 React part 1: Routing deliverable
 
