@@ -46,22 +46,27 @@
             <h2>Random Choice Maker</h2>
             <p>3rd party api call will be used to get color pallette for wheel</p>
             <div id="wheel" class="wheel-container my-4 mx-auto">
-                    <div class="option" style="--i:1">Option1</div>
-                    <div class="option" style="--i:2">Option2</div>
-                    <div class="option" style="--i:3">Option3</div>
-                    <div class="option" style="--i:4">Option4</div>
+                <div class="option" style="--i:1">Option1</div>
+                <div class="option" style="--i:2">Option2</div>
+                <div class="option" style="--i:3">Option3</div>
+                <div class="option" style="--i:4">Option4</div>
             </div>
-            <button id="spin" class="btn btn-primary mb-4">Spin</button>
-
-            <div id="other-spins">
-                <h4>Other Spins</h4>
-                <p>Cosmo spun cougar blue</p>
+            <button id="spin" class="btn btn-primary btn-lg mb-4 mx-auto">Spin</button>
+            <div class="d-none d-md-block position-absolute end-0 mt-2">
+                <h6>Other Spinners</h6>
+                <div id="other-spinners" class="overflow-hidden me-4">
+                    <div class="text-secondary">Cosmo spun cougar blue</div>
+                    <div class="text-secondary">Cosmo spun cougar blue</div>
+                    <div class="text-secondary">Cosmo spun cougar blue</div>
+                    <div class="text-secondary">Cosmo spun cougar blue</div>
+                    <div class="text-secondary">Cosmo spun cougar blue</div>
+                </div>
             </div>
         </main>
 
         <footer class="spinner-dark text-light sticky-bottom p-2">
             <div class="d-flex fw-bold align-items-center justify-content-between">
-                <p class="mb-0">&copy; 2025 Ethan Dye - Wheel Spinner</p>
+                <p class="mb-0">&copy; 2025 Ethan Dye</p>
                 <a class="btn btn-outline-primary spinner-accent" href="https://github.com/ecdye/startup"><i class="bi bi-github"></i> Source</a>
             </div>
         </footer>
