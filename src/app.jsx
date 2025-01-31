@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import './app.css';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './home/home';
 import { Login } from './login/login';
@@ -44,7 +44,9 @@ export default function App() {
                 <footer className="spinner-dark text-light sticky-bottom p-2">
                     <div className="d-flex fw-bold align-items-center justify-content-between">
                         <p className="mb-0">&copy; 2025 Ethan Dye</p>
-                        <a className="btn btn-outline-primary spinner-accent" href="https://github.com/ecdye/startup"><i className="bi bi-github"></i> Source</a>
+                        <Button variant="outline-primary" className="spinner-accent" href="https://github.com/ecdye/startup">
+                            <i className="bi bi-github"></i> Source
+                        </Button>
                     </div>
                 </footer>
             </div>
