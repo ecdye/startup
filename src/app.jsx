@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import './app.css';
-import { Popover } from 'bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './home/home';
 import { Login } from './login/login';
@@ -14,34 +14,23 @@ export default function App() {
         <BrowserRouter>
             <div className="d-flex flex-column vh-100">
                 <header className="sticky-top">
-                    <nav className="navbar spinner-dark navbar-dark navbar-expand-lg">
+                    <Navbar className="spinner-dark" variant="dark" expand="lg">
                         <div className="container-fluid">
-                            <div className="navbar-header">
-                                <a className="navbar-brand" href="#">Wheel Spinner</a>
-                            </div>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <menu className="collapse navbar-collapse my-0" id="navbarSupportedContent">
-                                <ul className="navbar-nav ms-auto">
-                                    <li className="nav-item">
-                                        <NavLink className='nav-link' to='/'>Home</NavLink>
-                                    </li>
-                                    <li className="nav-item">
-                                        <NavLink className='nav-link' to='about'>About</NavLink>
-                                    </li>
-                                    <li className="nav-item dropdown">
-                                        <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Login / USERNAME PLACEHOLDER</a>
-                                        <ul className="dropdown-menu">
-                                            <li><NavLink className='dropdown-item' to='login'>Login</NavLink></li>
-                                            <li><hr className="dropdown-divider" /></li>
-                                            <li><NavLink className='dropdown-item' to='history'>History</NavLink></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </menu>
+                            <Navbar.Brand href="#">Wheel Spinner</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="navbarSupportedContent" />
+                            <Navbar.Collapse id="navbarSupportedContent">
+                                <Nav className="ms-auto">
+                                    <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
+                                    <Nav.Link as={NavLink} to='/about'>About</Nav.Link>
+                                    <NavDropdown title="Login / USERNAME PLACEHOLDER" id="basic-nav-dropdown">
+                                        <NavDropdown.Item as={NavLink} to='/login'>Login</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item as={NavLink} to='/history'>History</NavDropdown.Item>
+                                    </NavDropdown>
+                                </Nav>
+                            </Navbar.Collapse>
                         </div>
-                    </nav>
+                    </Navbar>
                 </header>
 
                 <Routes>
