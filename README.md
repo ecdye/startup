@@ -20,7 +20,7 @@ You know that moment when you need to decide between a list of options and they 
 
 ### Design
 
-![Design image](src/img/DesignDrawing.jpg)
+![Design image](public/DesignDrawing.jpg)
 
 Just a simple page where the central element is the spinning wheel, and you can put in all of the options.
 
