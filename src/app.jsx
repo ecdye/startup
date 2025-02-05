@@ -55,5 +55,9 @@ export default function App() {
 }
 
 function NotFound() {
-    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+    return (
+        <main className='spinner-light container-fluid d-flex flex-column flex-grow-1 justify-content-center align-items-center'>
+            <h1>404: Return to sender. Address unknown.</h1>
+        </main>
+    );
 }
