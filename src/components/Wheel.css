@@ -1,0 +1,61 @@
+:root {
+    --wheel-size: min(80vmin, 300px);
+    --spot-size: calc(var(--wheel-size) / var(--num-spots));
+}
+
+.wheel-container {
+    position: relative;
+    width: var(--wheel-size);
+    height: var(--wheel-size);
+    border-radius: 50%;
+    border: 4px solid #9fd3c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #fff 50%, #ccc 100%);
+    overflow: hidden;
+    margin: auto;
+}
+
+.option {
+    --angle: calc(360deg / var(--num-spots) * var(--i));
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+    transform-origin: 50% 50%;
+    transform: rotate(var(--angle));
+    background-color: hsl(calc(var(--i) * 360 / var(--num-spots)), 100%, 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option-label {
+    --angle: calc(360deg / var(--num-spots) * var(--i));
+    --text-width: calc(300px / var(--num-spots) * 1.2); /* Dynamically set width */
+
+    position: absolute;
+    width: var(--text-width);
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+
+    /* Center the text properly */
+    top: 50%;
+
+    transform-origin: center;
+    transform:
+        rotate(var(--angle))
+        translate(100px) /* Moves text outward */
+        translateX(calc(-50% + var(--text-width) / 2)) /* Adjusts centering */
+        rotate(calc(-1 * var(--angle)));
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
