@@ -8,8 +8,13 @@ import { Home } from './home/home';
 import { Login } from './login/login';
 import { History } from './history/history';
 import { About } from './about/about';
+import { AuthState } from './login/authState';
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
     return (
         <BrowserRouter>
             <div className="d-flex flex-column vh-100">
@@ -36,7 +41,16 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Home />} exact />
                     <Route path='/about' element={<About />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={
+                        <Login
+                            userName={userName}
+                            authState={authState}
+                            onAuthChange={(userName, authState) => {
+                                setUserName(userName);
+                                setAuthState(authState);
+                            }}
+                        />
+                        } />
                     <Route path='/history' element={<History />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
