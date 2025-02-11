@@ -30,8 +30,9 @@ export default function App() {
                                     {authState === AuthState.Authenticated && (
                                         <NavDropdown title={userName} id="basic-nav-dropdown">
                                             <NavDropdown.Item as={NavLink} to='/login'>Account</NavDropdown.Item>
-                                            <NavDropdown.Divider />
                                             <NavDropdown.Item as={NavLink} to='/history'>History</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item as={NavLink} onClick={() => onAuthChange('', AuthState.Unauthenticated)} to=''>Logout</NavDropdown.Item>
                                         </NavDropdown>
                                     )}
                                     {(authState === AuthState.Unauthenticated || authState === AuthState.Unknown) && (
