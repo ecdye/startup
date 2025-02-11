@@ -46,7 +46,10 @@ export function Login({ userName, authState, onAuthChange }) {
                     </form>
                 </>
             ) : (
-                <h2>Welcome back, {userName}!</h2>
+                <>
+                    <h2>Welcome back, {userName}!</h2>
+                    <Button variant="primary" onClick={() => onAuthChange('', AuthState.Unauthenticated)}>Logout</Button>
+                </>
             )}
         </main>
     );

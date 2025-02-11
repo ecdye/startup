@@ -12,7 +12,7 @@ import { AuthState } from './login/authState';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const currentAuthState = AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
     return (
@@ -27,11 +27,16 @@ export default function App() {
                                 <Nav className="ms-auto">
                                     <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
                                     <Nav.Link as={NavLink} to='/about'>About</Nav.Link>
-                                    <NavDropdown title="Login / USERNAME PLACEHOLDER" id="basic-nav-dropdown">
-                                        <NavDropdown.Item as={NavLink} to='/login'>Login</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item as={NavLink} to='/history'>History</NavDropdown.Item>
-                                    </NavDropdown>
+                                    {authState === AuthState.Authenticated && (
+                                        <NavDropdown title={userName} id="basic-nav-dropdown">
+                                            <NavDropdown.Item as={NavLink} to='/login'>Account</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item as={NavLink} to='/history'>History</NavDropdown.Item>
+                                        </NavDropdown>
+                                    )}
+                                    {(authState === AuthState.Unauthenticated || authState === AuthState.Unknown) && (
+                                        <Nav.Link as={NavLink} to='/login'>Login</Nav.Link>
+                                    )}
                                 </Nav>
                             </Navbar.Collapse>
                         </div>
@@ -51,7 +56,12 @@ export default function App() {
                             }}
                         />
                         } />
-                    <Route path='/history' element={<History />} />
+                    <Route path='/history' element={
+                        <History
+                            userName={userName}
+                            authState={authState}
+                        />
+                    } />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
