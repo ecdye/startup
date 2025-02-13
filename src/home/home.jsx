@@ -1,12 +1,14 @@
 import React from 'react';
 import { Wheel } from '../components/Wheel';
-// import './home.css';
+import { Button } from 'react-bootstrap';
+import { AuthState } from '../login/authState';
 
-export function Home() {
+export function Home({ userName, authState }) {
     const [options, setOptions] = React.useState(() => {
         const savedOptions = localStorage.getItem('options');
         return savedOptions ? JSON.parse(savedOptions) : ['Option1', 'Option2', 'Option3', 'Option4'];
     });
+    const [wheelName, setWheelName] = React.useState('');
 
     const handleOptionChange = (index, newValue) => {
         const newOptions = [...options];
@@ -32,6 +34,12 @@ export function Home() {
         };
     }, []);
 
+    function saveSpinner() {
+        const userSpinners = JSON.parse(localStorage.getItem(userName)) || [];
+        userSpinners.push({ name: wheelName, options });
+        localStorage.setItem(userName, JSON.stringify(userSpinners));
+    }
+
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             <h2 className='mx-auto'>Random Choice Maker</h2>
@@ -49,6 +57,14 @@ export function Home() {
                         </li>
                     ))}
                 </ul>
+                {authState === AuthState.Authenticated && (
+                    <form className="col">
+                        <div className="row ms-2 mb-2">
+                            <input type="text" placeholder="Enter Name of Wheel" onChange={(e) => setWheelName(e.target.value)} />
+                        </div>
+                        <Button variant="primary" size="sm" className='ms-2' onClick={saveSpinner}>Save Spinner</Button>
+                    </form>
+                )}
             </div>
             <div className="d-none d-md-block position-absolute end-0 mt-2">
                 <h6>Other Spinners</h6>
