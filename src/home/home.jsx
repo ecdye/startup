@@ -20,7 +20,7 @@ export function Home() {
             <h2>Random Choice Maker</h2>
             <p>3rd party api call will be used to get color pallette for wheel</p>
             <Wheel options={options} />
-            <div className="option-editor mt-4">
+            <div className="option-editor mt-0">
                 <h4>Edit Options</h4>
                 <ul>
                     {options.map((option, index) => (

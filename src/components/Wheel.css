@@ -1,5 +1,5 @@
 :root {
-    --wheel-size: min(80vmin, 300px);
+    --wheel-size: min(80vmin, 40vw);
     --spot-size: calc(var(--wheel-size) / var(--num-spots));
 }
 
@@ -15,6 +15,10 @@
     background: radial-gradient(circle, #fff 50%, #ccc 100%);
     overflow: hidden;
     margin: auto;
+}
+
+.wheel-container.spinning {
+    transition: transform 3s ease-out;
 }
 
 .option {
@@ -38,7 +42,7 @@
     position: absolute;
     width: var(--text-width);
     text-align: center;
-    font-size: 14px;
+    font-size: calc(var(--wheel-size) / 20);
     color: white;
     font-weight: bold;
 
@@ -47,7 +51,7 @@
     transform-origin: center;
     transform:
         rotate(var(--angle))
-        translate(100px) /* Moves text outward */
+        translate(calc(var(--wheel-size) / 3.5)) /* Moves text outward */
         translateX(calc(-50% + var(--text-width) / 2)) /* Adjusts centering */
         rotate(calc(-1 * var(--angle)));
 }
@@ -57,4 +61,10 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+}
+
+.lessWidth {
+    width: 20vw;
+    margin-left: auto;
+    margin-right: auto;
 }
