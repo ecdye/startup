@@ -28,7 +28,7 @@ export default function App() {
                                     <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
                                     <Nav.Link as={NavLink} to='/about'>About</Nav.Link>
                                     {authState === AuthState.Authenticated && (
-                                        <NavDropdown title={userName} id="basic-nav-dropdown">
+                                        <NavDropdown title={userName} align="end" id="basic-nav-dropdown">
                                             <NavDropdown.Item as={NavLink} to='/login'>Account</NavDropdown.Item>
                                             <NavDropdown.Item as={NavLink} to='/history'>History</NavDropdown.Item>
                                             <NavDropdown.Divider />
