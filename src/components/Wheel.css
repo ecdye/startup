@@ -44,7 +44,6 @@
 
     /* Center the text properly */
     top: 50%;
-
     transform-origin: center;
     transform:
         rotate(var(--angle))
