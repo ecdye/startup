@@ -15,12 +15,28 @@ export function Home() {
         localStorage.setItem('options', JSON.stringify(newOptions));
     };
 
+    const [optionsDisplayClass, setOptionsDisplayClass] = React.useState(() => {
+        return window.innerWidth > 768 ? 'option-editor d-block position-absolute start-2 mt-2'
+            : 'option-editor d-block mt-4 mx-auto';
+    });
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            setOptionsDisplayClass(window.innerWidth > 768 ? 'option-editor d-block position-absolute start-2 mt-2'
+                : 'option-editor d-block mt-4 mx-auto');
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
-            <h2>Random Choice Maker</h2>
-            <p>3rd party api call will be used to get color pallette for wheel</p>
+            <h2 className='mx-auto'>Random Choice Maker</h2>
             <Wheel options={options} />
-            <div className="option-editor mt-0">
+            <div className={optionsDisplayClass}>
                 <h4>Edit Options</h4>
                 <ul>
                     {options.map((option, index) => (

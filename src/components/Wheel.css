@@ -1,5 +1,5 @@
 :root {
-    --wheel-size: min(80vmin, 30vw);
+    --wheel-size: min(80vmin, max(30vw, 300px));
     --spot-size: calc(var(--wheel-size) / var(--num-spots));
 }
 
@@ -29,7 +29,7 @@
     clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
     transform-origin: 50% 50%;
     transform: rotate(var(--angle));
-    background-color: hsl(calc(var(--i) * 360 / var(--num-spots)), 100%, 50%);
+    background-color: var(--color);
     display: flex;
     justify-content: center;
     align-items: center;
