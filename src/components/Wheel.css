@@ -1,5 +1,5 @@
 :root {
-    --wheel-size: min(80vmin, 40vw);
+    --wheel-size: min(80vmin, 30vw);
     --spot-size: calc(var(--wheel-size) / var(--num-spots));
 }
 
