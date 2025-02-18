@@ -12,8 +12,21 @@ import { AuthState } from './login/authState';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [userNameLog, setUserNameLog] = React.useState(localStorage.getItem('userNameLog') || '');
+    const currentAuthState = userNameLog ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
+
+    const onAuthChange = (newUserName, newAuthState) => {
+        if (newAuthState === AuthState.Unauthenticated) {
+            localStorage.removeItem('userNameLog');
+        } else {
+            localStorage.setItem('userName', newUserName);
+            localStorage.setItem('userNameLog', newUserName);
+            setUserNameLog(newUserName);
+        }
+        setUserName(newUserName);
+        setAuthState(newAuthState);
+    };
 
     return (
         <BrowserRouter>
@@ -56,10 +69,7 @@ export default function App() {
                         <Login
                             userName={userName}
                             authState={authState}
-                            onAuthChange={(userName, authState) => {
-                                setUserName(userName);
-                                setAuthState(authState);
-                            }}
+                            onAuthChange={(userName, authState) => onAuthChange(userName, authState)}
                         />
                         } />
                     <Route path='/history' element={
