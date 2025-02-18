@@ -40,6 +40,7 @@ export function Home({ userName, authState }) {
         localStorage.setItem(userName, JSON.stringify(userSpinners));
     }
 
+    (setInterval(() => console.log('New external spins'), 5000))
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             <h2 className='mx-auto'>Random Choice Maker</h2>

@@ -16,6 +16,7 @@ export function Wheel({ options }) {
             setSelectedOption(options[randomIndex]);
             setSpinning(false);
         }, 3000); // Spin duration
+        console.log('Report this result to the server:', options[randomIndex]);
     };
 
     function getPaletteColors() {
@@ -60,7 +61,7 @@ export function Wheel({ options }) {
                     </React.Fragment>
                 ))}
             </div>
-            <Button variant="primary" size="lg" className="lessWidth" onClick={spinWheel} disabled={spinning}>
+            <Button variant="primary" size="lg" className="lessWidth mb-4" onClick={spinWheel} disabled={spinning}>
                 {spinning ? 'Spinning...' : 'Spin'}
             </Button>
             {selectedOption && <div className="result">Selected: {selectedOption}</div>}
