@@ -3,6 +3,13 @@ import { AuthState } from '../login/authState';
 import { ListGroup } from 'react-bootstrap';
 
 export function History({ userName, authState }) {
+    const [history, setHistory] = React.useState([]);
+
+    React.useEffect(() => {
+        const savedHistory = JSON.parse(localStorage.getItem(userName)) || [];
+        setHistory(savedHistory);
+    }, [userName]);
+
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             {(authState === AuthState.Unauthenticated || authState === AuthState.Unknown) && (
@@ -16,7 +23,11 @@ export function History({ userName, authState }) {
                     <h2>Your History</h2>
                     <p>Here are your previous spins:</p>
                     <ListGroup as="ul">
-                        <ListGroup.Item action href="#link1">PLACEHOLDER Wheel</ListGroup.Item>
+                        {history.map((item, index) => (
+                            <ListGroup.Item key={index} action onClick={() => localStorage.setItem('options', JSON.stringify(item.options))} href="/">
+                                {item.name} ({item.options.join(', ')})
+                            </ListGroup.Item>
+                        ))}
                     </ListGroup>
                 </>
             )}
