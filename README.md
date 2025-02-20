@@ -95,8 +95,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Everything is mocked out and working using local browser storage, or placeholders for service calls.
+- [x] **Hooks** - There are hooks in place throughout that use the state or effect react functions.
 
 ## 🚀 Service deliverable
 
