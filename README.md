@@ -98,6 +98,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **All functionality implemented or mocked out** - Everything is mocked out and working using local browser storage, or placeholders for service calls.
 - [x] **Hooks** - There are hooks in place throughout that use the state or effect react functions.
 
+See notes.md for more notes on what I've learned.
+
 ## 🚀 Service deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
