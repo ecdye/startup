@@ -35,9 +35,15 @@ export function Home({ userName, authState }) {
     }, []);
 
     function saveSpinner() {
-        const userSpinners = JSON.parse(localStorage.getItem(userName)) || [];
-        userSpinners.push({ name: wheelName, options });
-        localStorage.setItem(userName, JSON.stringify(userSpinners));
+        fetch('/api/wheels', {
+            method: 'post',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify({ name: wheelName, options }),
+        }).catch(() => {
+            // Save failed. Assuming offline
+        });
     }
 
     (setInterval(() => console.log('New external spins'), 5000))

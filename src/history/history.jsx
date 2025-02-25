@@ -6,7 +6,9 @@ export function History({ userName, authState }) {
     const [history, setHistory] = React.useState([]);
 
     React.useEffect(() => {
-        const savedHistory = JSON.parse(localStorage.getItem(userName)) || [];
+        const savedHistory = JSON.parse(
+            fetch('/api/wheels')
+            .then((response) => response.json())) || [];
         setHistory(savedHistory);
     }, [userName]);
 
