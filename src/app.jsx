@@ -12,8 +12,7 @@ import { AuthState } from './login/authState';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    const [userNameLog, setUserNameLog] = React.useState(localStorage.getItem('userNameLog') || '');
-    const currentAuthState = userNameLog ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
     const onAuthChange = (newUserName, newAuthState) => {
@@ -25,12 +24,10 @@ export default function App() {
                 // Logout failed. Assuming offline
             })
             .finally(() => {
-                localStorage.removeItem('userNameLog');
+                localStorage.removeItem('userName');
             });
         } else {
             localStorage.setItem('userName', newUserName);
-            localStorage.setItem('userNameLog', newUserName);
-            setUserNameLog(newUserName);
         }
         setUserName(newUserName);
         setAuthState(newAuthState);
