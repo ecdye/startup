@@ -33,3 +33,10 @@ I've discovered how difficult it can be in general to format and style a webpage
 Additionally, I have learned a lot more about using React Bootstrap. I feel like it is much easier to use than regular bootstrap as it requires a lot less inline classes to make it work.
 
 I have also learned a lot more about how to use browser storage and json to keep track of persistence data. I also had to do a bunch of experimentation to learn how I could properly do user persistance and remember the username but also properly log in and out.
+
+# Service Notes
+
+For some reason, Safari doesn't like to accept cookies when generated from localhost during development and that led me on a wild goose chase to fix code that wasn't even broken for several hours.
+After I figured that out the rest went pretty easy, and I was able to use simple fetch calls to access all the endpoints I created and also the external service I found for color palette generation.
+
+Its amazing how quick it all loads though!

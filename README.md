@@ -106,7 +106,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - I use express in a custom service to serve up two primary API functions: the user/authorization abilities and the ability to save the previous wheels spun. Interestingly Safari doesn't like cookies from localhost but it works fine elsewhere.
 - [x] **Static middleware for frontend** - My service in `service/index.js`, redirects to homepage if someone tries a path that is invalid
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+- [x] **Calls to third party endpoints** - I make a call to [The Color API](https://thecolorapi.com) to generate a palette from a semi-random input color and use that to set the colors for the whole wheel. It gets the initial color from the list of colors that I have defined in the first place.
 - [x] **Backend service endpoints** - All the API endpoints that I expose are setup in `service/index.js`
 - [x] **Frontend calls service endpoints** - My frontend uses my custom endpoints to properly track login/logout and save/serve history
 
