@@ -104,11 +104,11 @@ See notes.md for more notes on what I've learned.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I use express in a custom service to serve up two primary API functions: the user/authorization abilities and the ability to save the previous wheels spun. Interestingly Safari doesn't like cookies from localhost but it works fine elsewhere.
+- [x] **Static middleware for frontend** - My service in `service/index.js`, redirects to homepage if someone tries a path that is invalid
 - [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - All the API endpoints that I expose are setup in `service/index.js`
+- [x] **Frontend calls service endpoints** - My frontend uses my custom endpoints to properly track login/logout and save/serve history
 
 ## 🚀 DB/Login deliverable
 
