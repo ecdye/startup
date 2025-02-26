@@ -6,11 +6,26 @@ export function History({ userName, authState }) {
     const [history, setHistory] = React.useState([]);
 
     React.useEffect(() => {
-        const savedHistory = JSON.parse(
-            fetch('/api/wheels')
-            .then((response) => response.json())) || [];
-        setHistory(savedHistory);
-    }, [userName]);
+        async function fetchHistory() {
+            try {
+                const response = await fetch('/api/wheels', {
+                    method: 'get',
+                });
+                if (response.ok) {
+                    const savedHistory = await response.json();
+                    setHistory(savedHistory || []);
+                } else {
+                    console.error('Failed to fetch history:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching history:', error);
+            }
+        }
+
+        if (authState === AuthState.Authenticated) {
+            fetchHistory();
+        }
+    }, [userName, authState]);
 
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">

@@ -5,15 +5,28 @@ import { AuthState } from './authState';
 export function Login({ userName, authState, onAuthChange }) {
     const [loginUserName, setUserName] = React.useState(userName);
     const [loginPassword, setPassword] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState('');
 
-    async function loginUser() {
-        localStorage.setItem('userName', loginUserName);
-        onAuthChange(loginUserName, AuthState.Authenticated);
-    }
+    async function loginOrCreate(endpoint) {
+        try {
+            const response = await fetch(endpoint, {
+                method: 'post',
+                body: JSON.stringify({ email: loginUserName, password: loginPassword }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            });
 
-    async function createUser() {
-        localStorage.setItem('userName', loginUserName);
-        onAuthChange(loginUserName, AuthState.Authenticated);
+            if (response.status === 200) {
+                localStorage.setItem('userName', loginUserName);
+                onAuthChange(loginUserName, AuthState.Authenticated);
+            } else {
+                const body = await response.json();
+                setErrorMessage(`⚠ Error: ${body.msg}`);
+            }
+        } catch (error) {
+            setErrorMessage(`⚠ Error: ${error.message}`);
+        }
     }
 
     return (
@@ -23,6 +36,8 @@ export function Login({ userName, authState, onAuthChange }) {
                     <h2>Welcome to Wheel Spinner - Random Choice Maker</h2>
 
                     <p>To gain access to history features, please login:</p>
+
+                    {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
                     <form className="col mx-auto">
                         <div className="row">
@@ -39,9 +54,9 @@ export function Login({ userName, authState, onAuthChange }) {
                                 <input type="password" className="form-control" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </div>
-                        <div className="d-grid mt-4 gap-2">
-                            <Button type="submit" variant="primary" onClick={() => loginUser()} disabled={!loginUserName || !loginPassword}>Login</Button>
-                            <Button type="submit" variant="secondary" onClick={() => createUser()} disabled={!loginUserName || !loginPassword}>Create Account</Button>
+                        <div className="d-grid mt-4 gap-2 mb-2">
+                            <Button type="button" variant="primary" onClick={() => loginOrCreate('/api/auth/login')} disabled={!loginUserName || !loginPassword}>Login</Button>
+                            <Button type="button" variant="secondary" onClick={() => loginOrCreate('/api/auth/create')} disabled={!loginUserName || !loginPassword}>Create Account</Button>
                         </div>
                     </form>
                 </>

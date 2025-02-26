@@ -34,8 +34,8 @@ export function Home({ userName, authState }) {
         };
     }, []);
 
-    function saveSpinner() {
-        fetch('/api/wheels', {
+    async function saveSpinner() {
+        await fetch('/api/wheels', {
             method: 'post',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -46,7 +46,6 @@ export function Home({ userName, authState }) {
         });
     }
 
-    (setInterval(() => console.log('New external spins'), 5000))
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             <h2 className='mx-auto'>Random Choice Maker</h2>
@@ -69,7 +68,7 @@ export function Home({ userName, authState }) {
                         <div className="row ms-2 mb-2">
                             <input type="text" placeholder="Enter Name of Wheel" onChange={(e) => setWheelName(e.target.value)} />
                         </div>
-                        <Button variant="primary" size="sm" className='ms-2' onClick={saveSpinner}>Save Spinner</Button>
+                        <Button type="button" variant="primary" size="sm" className='ms-2' onClick={saveSpinner}>Save Spinner</Button>
                     </form>
                 )}
             </div>

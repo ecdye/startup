@@ -1,13 +1,13 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const app = express();
 
 const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
-let users = {};
+let users = [];
 let wheels = {};
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
@@ -28,28 +28,35 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-    if (await findUser('email', req.body.email)) {
-        res.status(409).send({ msg: 'Existing user' });
-    } else {
-        const user = await createUser(req.body.email, req.body.password);
-
-        setAuthCookie(res, user.token);
-        res.send({ email: user.email });
+    try {
+        if (await findUser('email', req.body.email)) {
+            res.status(409).send({ msg: 'Existing user' });
+        } else {
+            const user = await createUser(req.body.email, req.body.password);
+            setAuthCookie(res, user.token);
+            res.send({ email: user.email });
+        }
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send({ msg: 'Internal server error' });
     }
 });
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-    const user = await findUser('email', req.body.email);
-    if (user) {
-        if (await bcrypt.compare(req.body.password, user.password)) {
+    try {
+        const user = await findUser('email', req.body.email);
+        if (user && await bcrypt.compare(req.body.password, user.password)) {
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
             res.send({ email: user.email });
-            return;
+        } else {
+            res.status(401).send({ msg: 'Unauthorized' });
         }
+    } catch (error) {
+        console.error('Error logging in user:', error);
+        res.status(500).send({ msg: 'Internal server error' });
     }
-    res.status(401).send({ msg: 'Unauthorized' });
 });
 
 // DeleteAuth logout a user
@@ -72,15 +79,16 @@ const verifyAuth = async (req, res, next) => {
     }
 };
 
-apiRouter.get('/wheels', verifyAuth, async (_req, res) => {
+apiRouter.get('/wheels', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
-    res.send(wheels[user.email]);
+    res.send(wheels[user.email] || []);
 });
 
 apiRouter.post('/wheels', verifyAuth, async (req, res) => {
+    console.log('Received wheel:', req.body);
     const user = await findUser('token', req.cookies[authCookieName]);
-    wheels = updateWheels(user.email, req.body);
-    res.send(scores);
+    updateWheels(user.email, req.body);
+    res.send(wheels[user.email]);
 });
 
 // Default error handler

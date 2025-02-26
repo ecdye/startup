@@ -18,7 +18,15 @@ export default function App() {
 
     const onAuthChange = (newUserName, newAuthState) => {
         if (newAuthState === AuthState.Unauthenticated) {
-            localStorage.removeItem('userNameLog');
+            fetch(`/api/auth/logout`, {
+                method: 'delete',
+            })
+            .catch(() => {
+                // Logout failed. Assuming offline
+            })
+            .finally(() => {
+                localStorage.removeItem('userNameLog');
+            });
         } else {
             localStorage.setItem('userName', newUserName);
             localStorage.setItem('userNameLog', newUserName);
