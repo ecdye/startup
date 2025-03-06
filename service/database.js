@@ -38,7 +38,7 @@ async function findUserWheels(email) {
 }
 
 async function updateUserWheels(email, wheel) {
-    if (findUserWheels(email)) {
+    if (await findUserWheels(email)) {
         await wheelsCollection.updateOne({ email }, { $push: { wheels: wheel } });
     } else {
         await wheelsCollection.insertOne({ email, wheels: [wheel] });
