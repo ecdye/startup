@@ -84,7 +84,7 @@ apiRouter.get('/wheels', verifyAuth, async (req, res) => {
 
 apiRouter.post('/wheels', verifyAuth, async (req, res) => {
     const user = await DB.findUser('token', req.cookies[authCookieName]);
-    DB.updateUserWheels(user.email, req.body);
+    await DB.updateUserWheels(user.email, req.body);
     res.send(await DB.findUserWheels(user.email));
 });
 
