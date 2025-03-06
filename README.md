@@ -114,11 +114,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [x] **User registration** - User registration is now persistent because of MongoDB and it also properly hashes and securely stores passwords in the DB.
+- [x] **User login and logout** - The user login/out works properly and remembers their data across login/logout. It also properly stores the user information so that you can't just login with the wrong password, as that used to be the case.
+- [x] **Stores data in MongoDB** - Data is forwarded to the MongoDB database I have setup, it stores both the user login information (securely) and their associated wheel history for future reference when they save their choices. It was simple to migrate the local variable usage to be instead using MongoDB because of how simply it integrates with JSON, also because of how compartmented the design of the website is.
+- [x] **Stores credentials in MongoDB** - All credentials are stored in the MongoDB database, local browser storage is only used for temporary storage of wheel configurations but no user data is actually stored locally.
+- [x] **Restricts functionality based on authentication** - Functionality is properly limited now to only allow access to the history page if the user is logged in. If it is accessed without proper authentication it should ask the user to login to access the page.
 
 ## 🚀 WebSocket deliverable
 
