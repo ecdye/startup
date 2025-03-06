@@ -33,8 +33,22 @@ async function updateUser(user) {
     await usersCollection.updateOne({ email: user.email }, { $set: user });
 }
 
+async function findUserWheels(email) {
+    return wheelsCollection.findOne({ email });
+}
+
+async function updateUserWheels(email, wheel) {
+    if (findUserWheels(email)) {
+        await wheelsCollection.updateOne({ email }, { $push: { wheels: wheel } });
+    } else {
+        await wheelsCollection.insertOne({ email, wheels: [wheel] });
+    }
+}
+
 module.exports = {
     findUser,
     addUser,
     updateUser,
+    findUserWheels,
+    updateUserWheels,
 };

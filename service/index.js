@@ -7,9 +7,6 @@ const DB = require('./database.js');
 
 const authCookieName = 'token';
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
-let wheels = {};
-
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -82,13 +79,13 @@ const verifyAuth = async (req, res, next) => {
 
 apiRouter.get('/wheels', verifyAuth, async (req, res) => {
     const user = await DB.findUser('token', req.cookies[authCookieName]);
-    res.send(wheels[user.email] || []);
+    res.send(await DB.findUserWheels(user.email));
 });
 
 apiRouter.post('/wheels', verifyAuth, async (req, res) => {
     const user = await DB.findUser('token', req.cookies[authCookieName]);
-    updateWheels(user.email, req.body);
-    res.send(wheels[user.email]);
+    DB.updateUserWheels(user.email, req.body);
+    res.send(await DB.findUserWheels(user.email));
 });
 
 // Default error handler
@@ -100,13 +97,6 @@ app.use(function (err, req, res, next) {
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
-
-function updateWheels(userKey, newWheel) {
-    if (!wheels[userKey]) {
-        wheels[userKey] = [];
-    }
-    wheels[userKey].push(newWheel);
-}
 
 async function createUser(email, password) {
     const passwordHash = await bcrypt.hash(password, 10);
