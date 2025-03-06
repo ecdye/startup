@@ -6,19 +6,6 @@ export function Wheel({ options }) {
     const [spinning, setSpinning] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const [rotation, setRotation] = useState(0);
-
-    const spinWheel = () => {
-        setSpinning(true);
-        const randomIndex = Math.floor(Math.random() * options.length);
-        const newRotation = rotation + 360 * 5 + (360 / options.length) * randomIndex;
-        setRotation(newRotation);
-        setTimeout(() => {
-            setSelectedOption(options[randomIndex]);
-            setSpinning(false);
-        }, 3000); // Spin duration
-        console.log('Report this result to the server:', options[randomIndex]);
-    };
-
     const [paletteColors, setPaletteColors] = useState([]);
 
     useEffect(() => {
@@ -49,9 +36,22 @@ export function Wheel({ options }) {
             setPaletteColors(newColors);
         }
 
-        getPaletteColors();
-    }, [options]);
+        if (paletteColors.length === 0) {
+            getPaletteColors();
+        }
+    }, [paletteColors.length, options.length]);
 
+    const spinWheel = () => {
+        setSpinning(true);
+        const randomIndex = Math.floor(Math.random() * options.length);
+        const newRotation = rotation + 360 * 5 + (360 / options.length) * randomIndex;
+        setRotation(newRotation);
+        setTimeout(() => {
+            setSelectedOption(options[randomIndex]);
+            setSpinning(false);
+        }, 3000); // Spin duration
+        console.log('Report this result to the server:', options[randomIndex]);
+    };
 
     return (
         <>
