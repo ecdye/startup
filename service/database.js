@@ -11,7 +11,7 @@ const wheelsCollection = db.collection('wheels');
 (async function testConnection() {
     try {
         await db.command({ ping: 1 });
-        console.log(`Connect to database`);
+        console.log(`Connected to database`);
     } catch (ex) {
         console.log(`Unable to connect to database with ${url} because ${ex.message}`);
         process.exit(1);
@@ -38,6 +38,7 @@ async function findUserWheels(email) {
 }
 
 async function updateUserWheels(email, wheel) {
+    console.log("updateUserWheels", email, wheel);
     if (await findUserWheels(email)) {
         await wheelsCollection.updateOne({ email }, { $push: { wheels: wheel } });
     } else {

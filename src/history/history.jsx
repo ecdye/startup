@@ -13,7 +13,7 @@ export function History({ userName, authState }) {
                 });
                 if (response.ok) {
                     const savedHistory = await response.json();
-                    setHistory(savedHistory || []);
+                    setHistory(savedHistory.wheels || []);
                 } else {
                     console.error('Failed to fetch history:', response.statusText);
                 }
