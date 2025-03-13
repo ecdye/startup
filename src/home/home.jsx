@@ -2,6 +2,7 @@ import React from 'react';
 import { Wheel } from '../components/Wheel';
 import { Button } from 'react-bootstrap';
 import { AuthState } from '../login/authState';
+import { EventType, Notifier } from './wheelNotifier';
 
 export function Home({ userName, authState }) {
     const [options, setOptions] = React.useState(() => {
@@ -49,7 +50,7 @@ export function Home({ userName, authState }) {
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             <h2 className='mx-auto'>Random Choice Maker</h2>
-            <Wheel options={options} />
+            <Wheel options={options} userName={userName} />
             <div className={optionsDisplayClass}>
                 <h4>Edit Options</h4>
                 <ul>
