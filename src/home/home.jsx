@@ -2,7 +2,7 @@ import React from 'react';
 import { Wheel } from '../components/Wheel';
 import { Button } from 'react-bootstrap';
 import { AuthState } from '../login/authState';
-import { EventType, Notifier } from './wheelNotifier';
+import { EventType, EventNotifier } from './wheelNotifier';
 
 export function Home({ userName, authState }) {
     const [options, setOptions] = React.useState(() => {
@@ -47,6 +47,39 @@ export function Home({ userName, authState }) {
         });
     }
 
+    const [events, setEvent] = React.useState([]);
+
+    React.useEffect(() => {
+        EventNotifier.addHandler(handleEvent);
+
+        return () => {
+            EventNotifier.removeHandler(handleEvent);
+        };
+    });
+
+    function handleEvent(event) {
+        setEvent([...events, event]);
+    }
+
+    function createMessageArray() {
+        const messageArray = [];
+        for (const [i, event] of events.entries()) {
+            let message = 'unknown';
+            if (event.type === EventType.WheelSpun) {
+                message = `spun ${event.value.option}`;
+            } else if (event.type === EventType.System) {
+                message = event.value.msg;
+            }
+
+            messageArray.push(
+                <div key={i} className='text-secondary'>
+                    {event.from.split('@')[0]} {message}
+                </div>
+            );
+        }
+        return messageArray;
+    }
+
     return (
         <main className="spinner-light container-fluid d-flex flex-column flex-grow-1">
             <h2 className='mx-auto'>Random Choice Maker</h2>
@@ -76,11 +109,7 @@ export function Home({ userName, authState }) {
             <div className="d-none d-md-block position-absolute end-0 mt-2">
                 <h6>Other Spinners</h6>
                 <div id="other-spinners" className="overflow-hidden me-4">
-                    <div className="text-secondary">Cosmo spun cougar blue</div>
-                    <div className="text-secondary">Cosmo spun cougar blue</div>
-                    <div className="text-secondary">Cosmo spun cougar blue</div>
-                    <div className="text-secondary">Cosmo spun cougar blue</div>
-                    <div className="text-secondary">Cosmo spun cougar blue</div>
+                    {createMessageArray()}
                 </div>
             </div>
         </main>

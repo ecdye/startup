@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import './Wheel.css';
-import { EventType, Notifier } from '../home/wheelNotifier';
+import { EventType, EventNotifier } from '../home/wheelNotifier';
 
 export function Wheel({ options, userName }) {
     const [spinning, setSpinning] = useState(false);
@@ -51,7 +51,7 @@ export function Wheel({ options, userName }) {
             setSelectedOption(options[randomIndex]);
             setSpinning(false);
         }, 3000); // Spin duration
-        Notifier.broadcastEvent(userName, EventType.WheelSpun, { option: options[randomIndex] });
+        EventNotifier.broadcastEvent(userName, EventType.WheelSpun, { option: options[randomIndex] });
         // console.log('Report this result to the server:', options[randomIndex]);
     };
 

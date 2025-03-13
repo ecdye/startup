@@ -11,14 +11,14 @@ class EventMessage {
   }
 }
 
-class EventNotifier {
+class SocketEventNotifier {
     events = [];
     handlers = [];
 
     constructor() {
         let port = window.location.port;
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:4000/ws`);
         this.socket.onopen = (event) => {
             this.receiveEvent(new EventMessage('Wheel', EventType.System, { msg: 'connected' }));
         };
@@ -57,5 +57,5 @@ class EventNotifier {
     }
 }
 
-export const Notifier = new EventNotifier();
-export { EventType, Notifier };
+export const aNameThatSucks = new SocketEventNotifier();
+export { EventType, aNameThatSucks as EventNotifier };
