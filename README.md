@@ -124,8 +124,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - I now have the peer proxy setup to listen for the websocket requests and then properly handle them. It also properly keeps track of all the different sessions internally to make sure that it will be able to send events to all of them.
+- [x] **Frontend makes WebSocket connection** - Once loaded, the frontend connects to the backend and then just waits. It is then used to send when we spin a wheel and receives data about what spins other users have made.
+- [x] **Data sent over WebSocket connection** - Data is sent on connections, spins, and received client side when spins are broadcast from the server side.
+- [ ] **WebSocket data displayed** - The connections and spins are displayed on the client side to help the user feel connected. It also is styled to hide it on mobile devices to help keep the users focus on what they came for and not cram too much on a small screen.
+- [x] **Application is fully functional** - Yes. It is fully functional!
